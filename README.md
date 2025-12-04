@@ -7,53 +7,29 @@ This project helps students, developers, and educators understand how data is st
 # Features
 1. Hashing Technique Visualization
 
-Shows color-coded blocks representing memory slots
+* Shows color-coded blocks representing memory slots
 
-Displays how keys are inserted step-by-step
+* Displays how keys are inserted step-by-step
 
-Animates the probing sequence
+* Animates the probing sequence
 
-Displays key values inside blocks
+* Displays key values inside blocks
 
 2. Multiple Collision Handling Techniques
 
-Chaining
-
-Linear Probing
-
-Quadratic Probing
-
-Double Hashing
+* Chaining * Linear Probing * Quadratic Probing * Double Hashing
 
 3. Real-Time Metrics Display
 
-Collisions
-
-Elements inserted
-
-Load Factor
-
-Insertion Time
+* Collisions * Elements inserted * Load Factor * Insertion Time
 
 4. Live Results Chart
 
-Bar chart showing:
-
-Collisions
-
-Load Factor
-
-Elements
+* Bar chart showing * Collisions * Load Factor * Elements
 
 5. Configurable Inputs
 
-Change table size
-
-Provide comma/space-separated keys
-
-Generate random keys
-
-Load sample key set
+* Change table size * Provide comma/space-separated keys * Generate random keys * Load sample key set
 
 6. Optional Logging
 
@@ -63,16 +39,23 @@ Load sample key set
 
 7. Export to CSV
 
-Save metrics into a CSV file.
+* Save metrics into a CSV file.
 
 # Screenshots
 
-(Add your images here after uploading to GitHub)
-
+# Hashing UI
 ![Hashing UI](assets/ui.png)
+
+# Chaining
 ![Chaining](assets/chaining.png)
+
+# Linear Probing
 ![Linear Probing](assets/linear.png)
+
+# Quadratic Probing
 ![Quadratic Probing](assets/quadratic.png)
+
+# Double Hashing
 ![Double Hashing](assets/double.png)
 
 # Technology Stack
