@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hashinghorizons</groupId>
+  <artifactId>HashingHorizons</artifactId>
+  <version>1.0</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+
+    <javafx.platform>win</javafx.platform>
+    <javafx.version>20.0.2</javafx.version>
+
+    <app.name>HashingHorizons</app.name>
+    <app.vendor>Vansh Pratap Singh</app.vendor>
+  </properties>
+
+  <dependencies>
+    <!-- JavaFX Controls -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${javafx.version}</version>
+      <classifier>${javafx.platform}</classifier>
+    </dependency>
+
+    <!-- JavaFX FXML -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${javafx.version}</version>
+      <classifier>${javafx.platform}</classifier>
+    </dependency>
+
+    <!-- JUnit -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.9.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- keep maven-shared-utils in case some plugin needs it -->
+    <dependency>
+      <groupId>org.apache.maven.shared</groupId>
+      <artifactId>maven-shared-utils</artifactId>
+      <version>3.3.4</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+
+      <!-- JavaFX Maven Plugin (optional for mvn javafx:run) -->
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <mainClass>com.hashinghorizons.Main</mainClass>
+        </configuration>
+      </plugin>
+
+      <!-- exec plugin: call jpackage directly to create app-image (no WiX) -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>create-app-image</id>
+            <phase>package</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <!-- Use the jpackage shipped with the JDK running Maven -->
+              <executable>${java.home}/bin/jpackage</executable>
+
+              <arguments>
+                <!-- force app-image so no installer and no WiX -->
+                <argument>--type</argument>
+                <argument>app-image</argument>
+
+                <argument>--name</argument>
+                <argument>${app.name}</argument>
+
+                <argument>--dest</argument>
+                <argument>${project.build.directory}/installer</argument>
+
+                <argument>--app-version</argument>
+                <argument>${project.version}</argument>
+
+                <argument>--input</argument>
+                <argument>${project.build.directory}</argument>
+
+                <argument>--main-jar</argument>
+                <argument>${project.build.finalName}.jar</argument>
+
+                <argument>--main-class</argument>
+                <argument>com.hashinghorizons.Main</argument>
+
+                <argument>--vendor</argument>
+                <argument>${app.vendor}</argument>
+              </arguments>
+
+              <!-- Let exec plugin surface any jpackage failures (default behaviour) -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Ensure jar packaging includes main class -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>false</addClasspath>
+              <mainClass>com.hashinghorizons.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

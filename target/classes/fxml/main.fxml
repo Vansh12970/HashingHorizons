@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hashinghorizons.controller.MainController">
+    <top>
+        <HBox styleClass="header" spacing="12">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+
+            <Label text="Hashing Horizons" styleClass="app-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="8">
+                <Label fx:id="statusTableSize" text="Table: -" styleClass="chip"/>
+                <Label fx:id="statusMethod" text="Method: -" styleClass="chip"/>
+                <Label fx:id="statusLoad" text="Load: -" styleClass="chip"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="12" styleClass="controls">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+
+            <Label text="Hashing Options" styleClass="section-title"/>
+            <ComboBox fx:id="methodBox" prefWidth="220"/>
+            <HBox spacing="8">
+                <Label text="Table Size:"/>
+                <Spinner fx:id="tableSizeSpinner" prefWidth="100"/>
+            </HBox>
+            <Label text="Keys (comma or space separated)"/>
+            <TextArea fx:id="keysArea" promptText="e.g., 15,23,7,89,42" prefRowCount="3"/>
+            <HBox spacing="8">
+                <Button fx:id="loadSampleBtn" text="Load Sample" />
+                <Button fx:id="generateBtn" text="Generate Random" />
+            </HBox>
+
+            <Separator/>
+
+            <Label text="Operations" styleClass="section-title"/>
+            <HBox spacing="8">
+                <Button fx:id="runBtn" text="Run Simulation" styleClass="primary-button"/>
+                <Button fx:id="resetBtn" text="Reset"/>
+            </HBox>
+
+            <Label text="Options" styleClass="section-title"/>
+            <CheckBox fx:id="showProbesCheck" text="Show probes (log)"/>
+            <CheckBox fx:id="measureTimeCheck" text="Measure time" selected="true"/>
+            <Slider fx:id="speedSlider" min="0.2" max="2.0" value="1.0"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <HBox spacing="8">
+                <Button fx:id="exportBtn" text="Export CSV"/>
+                <Button fx:id="aboutBtn" text="About"/>
+            </HBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+
+            <Pane fx:id="vizPane" prefHeight="320" styleClass="viz-pane"/>
+            <HBox spacing="12">
+                <VBox spacing="8" styleClass="card" prefWidth="320">
+                    <Label text="Metrics" styleClass="section-title"/>
+                    <Label fx:id="metricCollisions" text="Collisions: -"/>
+                    <Label fx:id="metricElements" text="Elements: -"/>
+                    <Label fx:id="metricLoad" text="Load Factor: -"/>
+                    <Label fx:id="metricTime" text="Insert Time (ms): -"/>
+                </VBox>
+                <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="Results Chart" styleClass="section-title"/>
+                    <BarChart fx:id="resultChart" prefHeight="340" prefWidth="420">
+                        <xAxis>
+                            <CategoryAxis label="Metric"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Value"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox spacing="6" styleClass="log-area">
+            <padding>
+                <Insets top="8" right="8" bottom="8" left="8"/>
+            </padding>
+
+            <Label text="Log"/>
+            <TextArea fx:id="logArea" prefRowCount="6" wrapText="true"/>
+        </VBox>
+    </bottom>
+
+    <HBox spacing="10" alignment="center" style="-fx-padding: 8;">
+    <Rectangle width="16" height="16" fill="#3C3D37" stroke="#697565"/>
+    <Label text="Empty" textFill="#ECDFCC"/>
+    <Rectangle width="16" height="16" fill="#A8E6A1" stroke="#697565"/>
+    <Label text="Occupied" textFill="#ECDFCC"/>
+    <Rectangle width="16" height="16" fill="#F5A623" stroke="#697565"/>
+    <Label text="Probing" textFill="#ECDFCC"/>
+    <Rectangle width="16" height="16" fill="#E57373" stroke="#697565"/>
+    <Label text="Collision" textFill="#ECDFCC"/>
+    <Rectangle width="16" height="16" fill="#6CA0DC" stroke="#697565"/>
+    <Label text="Chained Slot" textFill="#ECDFCC"/>
+</HBox>
+
+</BorderPane>

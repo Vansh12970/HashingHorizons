@@ -1,0 +1,2 @@
+Technique,Table Size,Collisions,Elements,Load Factor,Insert Time (ms)
+Chaining,5,7,10,2.000,0.007

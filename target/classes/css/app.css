@@ -1,0 +1,130 @@
+/* Root window background and font */
+.root {
+    font-family: "Poppins", "Inter", Arial, sans-serif;
+    -fx-font-family: "Poppins", "Inter", Arial, sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #1E201E 0%, #3C3D37 100%);
+    -fx-text-fill: #ECDFCC;
+}
+
+/* Header bar */
+.header {
+    -fx-padding: 12;
+    -fx-alignment: center-left;
+}
+.app-title {
+    -fx-font-size: 22px;
+    -fx-text-fill: #ECDFCC;
+    -fx-font-weight: bold;
+}
+
+/* Status chips */
+.chip {
+    -fx-background-color: rgba(236, 223, 204, 0.1);
+    -fx-padding: 6 10;
+    -fx-background-radius: 8;
+    -fx-text-fill: #ECDFCC;
+    -fx-font-size: 13px;
+}
+
+/* Control panel */
+.controls {
+    -fx-background-color: #2A2B29;
+    -fx-background-radius: 12;
+    -fx-padding: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0, 0, 2);
+}
+
+.section-title {
+    -fx-text-fill: #ECDFCC;
+    -fx-font-weight: bold;
+    -fx-font-size: 13.5px;
+}
+
+/* Labels, checkboxes, spinners, and inputs */
+.label, .check-box, .spinner, .text-field, .text-area {
+    -fx-text-fill: #ECDFCC;
+    -fx-font-size: 13px;
+}
+
+/* TextArea */
+.text-area {
+    -fx-control-inner-background: #3C3D37;
+    -fx-text-fill: #ECDFCC;
+    -fx-highlight-fill: #F5A623;
+}
+
+/* CheckBox */
+.check-box > .box {
+    -fx-border-color: #ECDFCC;
+}
+.check-box:selected > .mark {
+    -fx-background-color: #F5A623;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #697565;
+    -fx-text-fill: #ECDFCC;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.primary-button {
+    -fx-background-color: #F5A623;
+    -fx-text-fill: #1E201E;
+    -fx-font-weight: 600;
+}
+.primary-button:hover {
+    -fx-background-color: derive(#F5A623, -10%);
+}
+
+/* Visualization */
+.viz-pane {
+    -fx-background-color: linear-gradient(to bottom, #222321, rgba(236,223,204,0.05));
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(236,223,204,0.1);
+    -fx-border-radius: 12;
+}
+
+/* Metric cards */
+.card {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+    -fx-text-fill: #ECDFCC;
+}
+
+/* Chart Axis and Label Colors */
+.chart-legend-item-symbol {
+    -fx-background-color: #F5A623, white;
+    -fx-background-insets: 0, 2;
+    -fx-shape: "M0,0 L12,0 L12,6 L0,6 Z"; /* rectangle shape */
+    -fx-scale-x: 1.4;
+    -fx-scale-y: 1.2;
+    -fx-background-radius: 2;
+}
+
+.chart-legend-item, .chart-title, .axis-label, .axis {
+    -fx-text-fill: #ECDFCC;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: rgba(236, 223, 204, 0.3);
+}
+
+.axis {
+    -fx-tick-label-fill: #ECDFCC;
+}
+
+.axis-tick-mark, .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+
+/* Log area */
+.log-area {
+    -fx-background-color: transparent;
+}
+.text-area {
+    -fx-control-inner-background: #151515;
+    -fx-text-fill: #ECDFCC;
+}
